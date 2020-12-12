@@ -27,9 +27,13 @@ export default class PlantList extends Component {
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
+    // added searchTerm prop from app component input
+    const filteredPlants = this.state.plants.filter(plant => plant.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+ 
     return (
       <main className="plant-list">
-        {this.state?.plants?.map((plant) => (
+        {/* switched this.state?.plants? for filteredState to use searchTerm */}
+        {filteredPlants.map((plant) => (
           <div className="plant-card" key={plant.id} data-testid="plant-card">
             <img className="plant-image" src={plant.img} alt={plant.name} />
             <div className="plant-details">

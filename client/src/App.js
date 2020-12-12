@@ -4,12 +4,15 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
+import useForm from './hooks/useForm';
 
 import "./App.css";
 
+const initialSearchTerm = {searchTerm: ''};
 function App() {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
+  const [searchTerm, handleChange] = useForm(initialSearchTerm);
 
   // add a plant to the cart
   const addToCart = (plant) => {
@@ -28,6 +31,11 @@ function App() {
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
+          <input className='search-input' type='text'
+            name='searchTerm'
+            placeholder='...search'
+            value={searchTerm.searchTerm} 
+            onChange={(e) => handleChange('searchTerm', e.target.value )}/>
           <ul className="steps">
             <li>
               <NavLink exact to="/">
@@ -47,7 +55,7 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => <PlantList addToCart={addToCart} />}
+          render={() => <PlantList searchTerm={searchTerm.searchTerm} addToCart={addToCart} />}
         />
         <Route
           path="/cart"
