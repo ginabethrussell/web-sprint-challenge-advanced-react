@@ -8,6 +8,7 @@ import { act } from "react-dom/test-utils";
 
 test("form header renders", () => {
     // form renders and displays Checkout Form header text
+    // render(<Cheorm />); failed as expected
     render(<CheckoutForm />);
     const h2Header = screen.getByText(/checkout form/i);
     expect(h2Header).toBeInTheDocument();
@@ -46,5 +47,6 @@ test("form shows success message on submit with form details", () => {
         userEvent.click(submitButton);   
     })
     const successMessage = screen.getByText(/woo-hoo/i);
+    // expect(successMessage).not.toBeInTheDocument(); fails as expected
     expect(successMessage).toBeInTheDocument();
 });
