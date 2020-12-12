@@ -29,14 +29,20 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how to build stateful class components.
+- You build class components by using the keyword class to extend the React.Component. If your class component is stateful, you create a constructor which first calls super and then sets up state on the this.state object. Your class component may update state using the this.setState() function to make sure state is updated correctly to cause component rerenders. Your class component must also call the render() function to return the jsx for your components displayed html.
 
 2. Describe the different phases of the component lifecycle.
+- In a class component the lifecycle methods control the order of state updates and rerenders. When the class component is rendered it first calls a constructor to set up methods on the class and any state object properties. Next render is called to display jsx. The next lifecycle method executed is componentDidMount. This method may be used for API calls needed to update state. This method is only called once. Other API calls and side effects may be controlled by the componentDidUpdate method which is called after each render. It is essential to use conditionals which compare current state and props with previous state and props to prevent infinite loops of side effects and renders. Lastly if needed to remove event listeners or prevent memory leaks the componentWillUnmount method is called to do any cleanup.
 
 3. Demonstrate an understanding of class component lifecycle methods.
+- See above
 
 4. Define stateful logic.
+- Stateful logic is any logic that deals with the initialization or updating of state on a component. In this Sprint we moved stateful logic for a form to a custom hook which uses useState to build and return state, and methods to operate on and update state.
 
 5. Describe how to test a React component with React Testing Library.
+- We use jest and rtl to test components using the Arrange, Act, Assert methods. We render a component, grab a node using rtl matchers, and use jest expect statements to make an assertion about the simulated DOM. 
+- We also used userEvents to simulate user actions and act() or waitFor() methods to check for DOM rendered responses to the changes generated in state.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
