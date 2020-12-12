@@ -5,6 +5,9 @@ import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
 import useForm from './hooks/useForm';
+import useLightMode from './hooks/useLightMode';
+import sun from './sun.png';
+import moon from './moon.png';
 
 import "./App.css";
 
@@ -13,6 +16,7 @@ function App() {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
   const [searchTerm, handleChange] = useForm(initialSearchTerm);
+  const [lightMode, toggleMode] = useLightMode();
 
   // add a plant to the cart
   const addToCart = (plant) => {
@@ -25,12 +29,13 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={lightMode? "light-mode App-wrapper": 'App-wrapper'}>
       <Router>
         <nav className="container">
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
+          
           <input className='search-input' type='text'
             name='searchTerm'
             placeholder='...search'
@@ -50,6 +55,19 @@ function App() {
                 </span>
               </NavLink>
             </li>
+            <li className='toggle'>
+              <div className='light-mode_toggle'>
+                <div onClick={(e) => {
+                  e.preventDefault();
+                  toggleMode();
+                }}
+                className={lightMode? 'toggle toggled': 'toggle'}>
+                  <span id='icon'><img width='25px' src={
+                    lightMode? sun: moon}/></span>
+              </div>
+              </div>
+            </li>
+          
           </ul>
         </nav>
         <Route
