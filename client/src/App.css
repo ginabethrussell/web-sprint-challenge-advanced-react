@@ -14,6 +14,11 @@ body {
   align-items: center;
 }
 
+.search-input {
+  width: 25%;
+  margin-left: auto;
+  margin-right: 20px;
+}
 h1 {
   font-weight: 100;
   color: white;
@@ -250,4 +255,63 @@ pre {
 .active {
   color: #0e101c;
   border-bottom: 2px solid !important;
+}
+
+.steps li .light-mode_toggle {
+  width: 50px;
+  padding: 0;
+  margin-right: 0;
+}
+.light-mode__toggle {
+  border-radius: 50px;
+  border: 1px solid black;
+  height: 30px;
+  position: relative;
+  width: 40px;
+}
+
+.toggle {
+  background: #f68819;
+  border-radius: 50px;
+  height: 25px;
+  left: 5px;
+  position: absolute;
+  transition: 0.2s;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.toggled {
+  left: 20px;
+}
+
+.light-mode {
+  color: #313843;
+  background-color: #fff;
+}
+.light-mode h1 {
+  color: #313843;
+}
+
+.light-mode .search-input {
+  border: 1px solid black;
+}
+.light-mode .plant-details {
+  color: #313843;
+}
+
+#icon {
+  text-align: center;
+}
+
+.light-mode form {
+  background: #c9fb00;
+  
+
+}
+
+.light-mode form label, .light-mode form input {
+  color: black;
+  border: 1px solid black;
 }
